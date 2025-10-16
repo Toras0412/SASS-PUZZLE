@@ -1,0 +1,133 @@
+@use 'variable';
+
+
+// ▼ 共通ボタンのスタイル（カラーだけを引数で変える）
+@mixin btn($color) {
+  display: block;
+  padding: 20px 30px;
+  color: #fff;
+  border-radius: 6px;
+  cursor: pointer;
+  background-color: $color;
+
+  text: {
+    decoration: none;
+    align: center;
+  }
+}
+
+.inner {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 10px;
+}
+
+.flex {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer {
+  padding: 70px 0;
+
+  &__sns {
+    &__list {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+
+      >li {
+        width: 32%;
+
+        &:nth-child(n + 4) {
+          margin-top: 20px;
+        }
+      }
+    }
+
+    &__btn {
+
+      // 各SNSボタンに mixin 適用
+      &.is-facebook {
+        @include btn(#4668b3);
+      }
+
+      &.is-twitter {
+        @include btn(#1DA1F2);
+      }
+
+      &.is-google {
+        @include btn(#ffa500);
+      }
+
+      &.is-pinterest {
+        @include btn(#ff6600);
+      }
+
+      &.is-behance {
+        @include btn(#0099cc);
+      }
+
+      &.is-dribbble {
+        @include btn(#E1306C);
+      }
+    }
+  }
+}
+
+$maxWidth: 1000px;
+$brandColor: #cd6799;
+
+
+
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: $maxWidth;
+  margin: 0 auto;
+  padding: 10px 0;
+
+  h1 {
+    text-align: left;
+  }
+
+  &__logo {
+    width: 80px;
+  }
+
+  &__list {
+    display: flex;
+
+    &>li {
+      margin-left: 30px;
+
+      /* 擬似クラスもこのように書く事が可能 */
+      &:first-child {
+        margin-left: 0;
+      }
+    }
+
+    &__link {
+      text-decoration: none;
+      color: #666;
+
+      font: {
+        size: 16px;
+        weight: bold;
+      }
+
+      &:hover {
+        color: $brandColor;
+      }
+    }
+  }
+}
+
+
+.test {
+  color: variable.$color-text;
+}
