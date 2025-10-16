@@ -1,0 +1,15 @@
+@mixin box_hader() {
+  margin-left: 10px;
+  height: 40px;
+  width: 40px;
+
+  &:first-child {
+      margin-left: 0px;
+    }
+}
+
+@mixin box_inner() {
+  height: 40px;
+  width: 140px;
+
+}
