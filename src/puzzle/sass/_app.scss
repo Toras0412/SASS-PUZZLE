@@ -1,0 +1,84 @@
+@use 'variable';
+@use 'mixin';
+
+.header {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin: 0 auto;
+  background-color: variable.$navy;
+  height: 100px;
+  width: 400px;
+
+  &_inner {
+    display: flex;
+    margin: 20px;
+    padding: 10px;
+    background-color: variable.$white;
+  }
+
+  &_box {
+    @include mixin.box_hader();
+  }
+
+}
+
+@each $class, $color in zip(variable.$classNames, variable.$buttonColor) {
+  .text-#{$class} {
+    background-color: $color;
+    background-clip: content-box;
+  }
+}
+
+
+.main {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  height: 250px;
+  width: 400px;
+
+  &_puzzle {
+    display: flex;
+    flex-direction: column;
+    background-color: variable.$red;
+    height: 250px;
+    width: 250px;
+    margin: 0;
+    padding: 40px 60px 40px 40px;
+    box-sizing: border-box;
+
+    &_inner {
+      padding: 5px;
+      box-sizing: border-box;
+      background-color: variable.$white;
+      margin-top: 10px;
+
+      &:first-child {
+        margin-top: 0px;
+      }
+    }
+  }
+
+  &_box {
+    @include mixin.box_inner();
+  }
+
+
+  &_sidebar {
+    background-color: variable.$green;
+    height: 250px;
+    width: 150px;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0 auto;
+  height: 100px;
+  width: 400px;
+  background-color: variable.$brown;
+}
